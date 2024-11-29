@@ -1,0 +1,32 @@
+header {
+  display: flex;
+  padding: 10px 20px;
+  justify-content: space-between;
+  background-color: #fff8;
+}
+
+.title-section {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.title-logo {
+  height: 35px;
+}
+
+.controls-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.control-button {
+  display: flex;
+  border: none;
+  cursor: pointer;
+}
+
+.icon {
+  height: 40px;
+}
