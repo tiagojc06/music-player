@@ -1,6 +1,6 @@
 header {
   display: flex;
-  padding: 10px 20px;
+  padding: 8px 40px;
   justify-content: space-between;
   background-color: #fff8;
 }
@@ -18,15 +18,85 @@ header {
 .controls-section {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 40px;
 }
 
-.control-button {
-  display: flex;
-  border: none;
-  cursor: pointer;
-}
-
-.icon {
+.control-section-icon {
   height: 40px;
+}
+
+.dropdown {
+  display: none;
+  background-color: #9d9d9d;
+  border: 1px solid #000;
+  position: absolute;
+  transform: translateX(-31px);
+}
+
+.language-dropdown.visible {
+  display: initial;
+}
+
+.background-dropdown.visible {
+  display: flex;
+}
+
+.language-dropdown-option {
+  padding: 5px;
+  font-size: .8rem;
+  border-top: 1px solid #000;
+  cursor: pointer;
+  transition: background-color .3s;
+}
+
+.language-dropdown-option:hover {
+  background-color: #adadad;
+}
+
+.language-dropdown-option:active {
+  background-color: #bdbdbd;
+}
+
+.language-dropdown-option:first-child {
+  border: none;
+}
+
+.background-dropdown {
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px;
+}
+
+.background-dropdown-main-section {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.background-dropdown-icon {
+  height: 20px;
+}
+
+.background-dropdown-img {
+  height: 40px;
+  width: 40px;
+  box-shadow: 0 0 2px #000;
+}
+
+.select-background-button {
+  font-size: .8rem;
+  background-color: #bdbdbd;
+  border: none;
+  border-radius: 2px;
+  padding: 2px 5px;
+  transition: background-color .3s, transform .1s;
+}
+
+.select-background-button:hover {
+  background-color: #cdcdcd;
+}
+
+.select-background-button:active {
+  background-color: #dddddd;
+  transform: scale(0.97) translate(1px, 1px);
 }
