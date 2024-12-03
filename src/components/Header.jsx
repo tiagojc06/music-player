@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "./Button";
 import titleLogo from "../img/icons/80s-chip-tunes.gif";
 import languageIcon from "../img/icons/language-icon.png";
 import languageIconPressed from "../img/icons/language-icon-pressed.png";
@@ -18,14 +19,26 @@ function Header() {
         <img className="title-logo" src={titleLogo} alt="Title Logo" />
       </div>
       <div className="controls-section">
-        <button className="control-button language-button">
-          <img className="icon language-icon" src={languageIcon} alt="Language Icon" />
-        </button>
-        <button className="control-button background-button">
-          <img className="icon background-icon" src={backgroundIcon} alt="Background Icon" />
-        </button>
+        <div className="control-section">
+          <Button
+            handleClick={() => console.log("Language Button Clicked")}
+            iconClassName="control-section-icon"
+            iconSrc={languageIcon}
+            altIconSrc={languageIconPressed}
+            iconAlt={"Language Icon"}
+          />
+        </div>
+        <div className="control-section">
+          <Button 
+            handleClick={() => console.log("Background Button Clicked")}
+            iconClassName="control-section-icon"
+            iconSrc={backgroundIcon}
+            altIconSrc={backgroundIconPressed}
+            iconAlt={"Background Icon"}
+          />
+        </div>
       </div>
-    </header>   
+    </header>
   );
 }
 
