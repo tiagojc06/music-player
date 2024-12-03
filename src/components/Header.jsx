@@ -11,10 +11,20 @@ import nextIcon from "../img/icons/next-icon.png";
 import nextIconPressed from "../img/icons/next-icon-pressed.png";
 import "../style-sheets/Header.css";
 
+const backgroundImgNames = [
+  "calme-sous-la-dent.png", 
+  "lakeside-chill.gif", 
+  "secret-beach.png", 
+  "sunny-tori.png", 
+  "sunrise-mirage.png", 
+  "sunset-mirage.png"
+];
+
 function Header() {
 
   const [isLanguageDropdownVisible, setIsLanguageDropdownVisible] = useState(false);
   const [isBackgroundDropdownVisible, setIsBackgroundDropdownVisible] = useState(false);
+  const [imgIndex, setImgIndex] = useState(0);
 
   const handleVisibility = type => {
     if (type === "Language") {
@@ -24,6 +34,14 @@ function Header() {
       setIsBackgroundDropdownVisible(!isBackgroundDropdownVisible);
       if (isLanguageDropdownVisible) setIsLanguageDropdownVisible(false);
     }
+  };
+
+  const handleClickBackButton = () => {
+    setImgIndex((prevImgIndex) => prevImgIndex === 0 ? backgroundImgNames.length - 1 : prevImgIndex - 1);
+  };
+
+  const handleClickNextButton = () => {
+    setImgIndex((prevImgIndex) => prevImgIndex === backgroundImgNames.length - 1 ? 0 : prevImgIndex + 1);
   };
   
   return (
@@ -57,15 +75,15 @@ function Header() {
           <div className={`dropdown background-dropdown ${isBackgroundDropdownVisible ? "visible" : ""}`.trimEnd()}>
             <div className="background-dropdown-main-section">
               <Button 
-                handleClick={() => console.log("Back Button Clicked")}
+                handleClick={handleClickBackButton}
                 iconClassName="background-dropdown-icon"
                 iconSrc={backIcon}
                 altIconSrc={backIconPressed}
                 iconAlt={"Back Icon"}
               />
-              <img className="background-dropdown-img" src={require("../img/backgrounds/calme-sous-la-dent.png")} alt="Background selected" />
+              <img className="background-dropdown-img" src={require(`../img/backgrounds/${backgroundImgNames[imgIndex]}`)} alt="Background selected" />
               <Button 
-                handleClick={() => console.log("Next Button Clicked")}
+                handleClick={handleClickNextButton}
                 iconClassName="background-dropdown-icon"
                 iconSrc={nextIcon}
                 altIconSrc={nextIconPressed}
