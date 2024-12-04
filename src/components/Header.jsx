@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import Button from "./Button";
 import titleLogo from "../img/icons/80s-chip-tunes.gif";
 import languageIcon from "../img/icons/language-icon.png";
@@ -25,6 +25,7 @@ function Header() {
   const [isLanguageDropdownVisible, setIsLanguageDropdownVisible] = useState(false);
   const [isBackgroundDropdownVisible, setIsBackgroundDropdownVisible] = useState(false);
   const [imgIndex, setImgIndex] = useState(0);
+  const [language, setLanguage] = useState("english");
 
   const handleVisibility = type => {
     if (type === "Language") {
@@ -42,6 +43,16 @@ function Header() {
 
   const handleClickNextButton = () => {
     setImgIndex((prevImgIndex) => prevImgIndex === backgroundImgNames.length - 1 ? 0 : prevImgIndex + 1);
+  };
+
+  // Este callback se ejecuta al renderizarse el componente.
+  useEffect (() => {
+    if (localStorage.getItem("language")) setLanguage(localStorage.getItem("language"));
+  }, []);
+
+  const handleLanguage = lang => {
+    localStorage.setItem("language", lang);
+    setLanguage(lang);
   };
   
   return (
@@ -90,7 +101,7 @@ function Header() {
                 iconAlt={"Next Icon"}
               />
             </div>
-            <button className="select-background-button">Select</button>
+            <button className="select-background-button">{language === "english" ? "Select" : "Seleccionar"}</button>
           </div>
         </div>
       </div>
