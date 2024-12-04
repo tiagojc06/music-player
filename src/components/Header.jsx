@@ -59,10 +59,10 @@ function Header() {
             altIconSrc={languageIconPressed}
             iconAlt={"Language Icon"}
           />
-          <div className={`dropdown language-dropdown ${isLanguageDropdownVisible ? "visible" : ""}`.trimEnd()}>
-            <div className="language-dropdown-option">English</div>
-            <div className="language-dropdown-option">Spanish</div>
-          </div>
+          <ul className={`dropdown language-dropdown ${isLanguageDropdownVisible ? "visible" : ""}`.trimEnd()}>
+            <li className="language-dropdown-option" onClick={() => handleLanguage("english")}>{language === "english" ? "English" : "Inglés"}</li>
+            <li className="language-dropdown-option" onClick={() => handleLanguage("spanish")}>{language === "english" ? "Spanish" : "Español"}</li>
+          </ul>
         </div>
         <div className="control-section">
           <Button 
