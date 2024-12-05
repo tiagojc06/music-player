@@ -25,6 +25,7 @@ function Header() {
   const [isLanguageDropdownVisible, setIsLanguageDropdownVisible] = useState(false);
   const [isBackgroundDropdownVisible, setIsBackgroundDropdownVisible] = useState(false);
   const [imgIndex, setImgIndex] = useState(0);
+  const [selectedImgIndex, setSelectedImgIndex] = useState(0);
   const [language, setLanguage] = useState("english");
 
   const handleVisibility = type => {
@@ -54,7 +55,10 @@ function Header() {
     if (savedLanguage) setLanguage(savedLanguage);
     if (savedBackgroundUrl) document.body.style.backgroundImage = `url("${savedBackgroundUrl}")`;
     else document.body.style.backgroundImage = `url("/img/backgrounds/${backgroundImgNames[0]}")`;
-    if (savedImgIndex) setImgIndex(savedImgIndex);
+    if (savedImgIndex) {
+      setImgIndex(savedImgIndex);
+      setSelectedImgIndex(savedImgIndex);
+    }
 
     return () => {
       document.body.style.backgroundImage = "";
@@ -71,6 +75,7 @@ function Header() {
     localStorage.setItem("background-url", newBackgroundUrl);
     localStorage.setItem("img-index", imgIndex);
     document.body.style.backgroundImage = `url("${localStorage.getItem("background-url")}")`;
+    setSelectedImgIndex(imgIndex);
   };
   
   return (
@@ -110,7 +115,11 @@ function Header() {
                 altIconSrc={backIconPressed}
                 iconAlt={"Back Icon"}
               />
-              <img className="background-dropdown-img" src={require(`../img/backgrounds/${backgroundImgNames[imgIndex]}`)} alt="Background selected" />
+              <div className="background-dropdown-img-container">
+                {/* No uso require() ya que las imagenes se encuentran en la carpeta public */}
+                <img className="background-dropdown-img" src={`/img/backgrounds/${backgroundImgNames[imgIndex]}`} alt="Background selected" />
+                <div className={`background-dropdown-img-overlay ${selectedImgIndex === imgIndex ? "visible" : ""}`.trimEnd()}><span>{language === "english" ? "Selected" : "Seleccionado"}</span></div>
+              </div>
               <Button 
                 handleClick={handleClickNextButton}
                 iconClassName="background-dropdown-icon"
