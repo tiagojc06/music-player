@@ -47,12 +47,30 @@ function Header() {
 
   // Este callback se ejecuta al renderizarse el componente.
   useEffect (() => {
-    if (localStorage.getItem("language")) setLanguage(localStorage.getItem("language"));
+    const savedLanguage = localStorage.getItem("language");
+    const savedBackgroundUrl = localStorage.getItem("background-url");
+    const savedImgIndex = parseInt(localStorage.getItem("img-index"));
+
+    if (savedLanguage) setLanguage(savedLanguage);
+    if (savedBackgroundUrl) document.body.style.backgroundImage = `url("${savedBackgroundUrl}")`;
+    else document.body.style.backgroundImage = `url("/img/backgrounds/${backgroundImgNames[0]}")`;
+    if (savedImgIndex) setImgIndex(savedImgIndex);
+
+    return () => {
+      document.body.style.backgroundImage = "";
+    };
   }, []);
 
   const handleLanguage = lang => {
     localStorage.setItem("language", lang);
     setLanguage(lang);
+  };
+
+  const handleBackgroundImg = () => {
+    const newBackgroundUrl = `/img/backgrounds/${backgroundImgNames[imgIndex]}`;
+    localStorage.setItem("background-url", newBackgroundUrl);
+    localStorage.setItem("img-index", imgIndex);
+    document.body.style.backgroundImage = `url("${localStorage.getItem("background-url")}")`;
   };
   
   return (
@@ -101,7 +119,7 @@ function Header() {
                 iconAlt={"Next Icon"}
               />
             </div>
-            <button className="select-background-button">{language === "english" ? "Select" : "Seleccionar"}</button>
+            <button className="select-background-button" onClick={handleBackgroundImg}>{language === "english" ? "Select" : "Seleccionar"}</button>
           </div>
         </div>
       </div>
