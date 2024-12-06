@@ -3,12 +3,18 @@ header {
   padding: 8px 40px;
   justify-content: space-between;
   background-color: #fff8;
+  gap: 60px;
 }
 
 .title-section {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 20px;
+}
+
+h1 {
+  max-width: 400px;
+  cursor: pointer;
 }
 
 .title-logo {
