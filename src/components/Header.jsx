@@ -22,6 +22,7 @@ const backgroundImgNames = [
 
 function Header() {
 
+  const [isTitlePressed, setIsTitlePressed] = useState(false);
   const [isLanguageDropdownVisible, setIsLanguageDropdownVisible] = useState(false);
   const [isBackgroundDropdownVisible, setIsBackgroundDropdownVisible] = useState(false);
   const [imgIndex, setImgIndex] = useState(0);
@@ -81,7 +82,7 @@ function Header() {
   return (
     <header>
       <div className="title-section">
-        <h1>pxamp</h1>
+        <h1 onMouseDown={() => setIsTitlePressed(true)} onMouseUp={() => setIsTitlePressed(false)}>{isTitlePressed ? "pixel art music player" : "pxamp"}</h1>
         <img className="title-logo" src={titleLogo} alt="Title Logo" />
       </div>
       <div className="controls-section">
