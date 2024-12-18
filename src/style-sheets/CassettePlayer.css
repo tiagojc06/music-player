@@ -1,0 +1,147 @@
+.cassette-player-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cassette-player-initial-structure, .cassette-player-song-info, .cassette-player-cassette-cover, .cassette-player-cassette, .cassette-player-controls {
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.cassette-player-initial-structure {
+  background-image: url("../img/cassette-player/cassette-player-initial-structure.png");
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90%;
+  aspect-ratio: 64/121;
+  position: relative;
+  color: #fff;
+}
+
+.cassette-player-song-info, .cassette-player-cassette-cover, .cassette-player-cassette, .cassette-player-controls, .controls-button-img {
+  position: absolute;
+}
+
+.cassette-player-song-info {
+  background-image: url("../img/cassette-player/cassette-player-screen.png");
+  display: flex;
+  justify-content: center;
+  width: 84.375%;
+  aspect-ratio: 54/12;
+  top: 38.01652893%;
+}
+
+.song-info-title-container {
+  width: 90%;
+  height: 29.16723166%;
+  position: relative;
+  top: 16.66698952%;
+  overflow: hidden;
+}
+
+.song-info-title {
+  width: min-content;
+  height: 100%;
+  position: absolute;
+  white-space: nowrap;
+  text-align: center;
+  animation: scrollText 8s linear infinite forwards;
+}
+
+.song-info-timeline-container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 33.33397904%;
+  position: absolute;
+  top: 50.00096856%;
+}
+
+.song-info-timeline {
+  background-color: #fff;
+  height: 12.5029063%;
+  position: relative;
+}
+
+.timeline-time-indicator {
+  background-color: #dfdfdf;
+  height: 230.6433566%;
+  width: 2.366274596%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  animation: timelineAnimation 5s 2s linear alternate forwards;
+}
+
+.song-info-timeline-actual-time {
+  position: absolute;
+  top: 37.5087189%;
+  height: 62.51453151%;
+  align-self: end;
+}
+
+.cassette-player-cassette-cover {
+  background-image: url("../img/cassette-player/cassette-cover.png");
+  width: 84.375%;
+  aspect-ratio: 54/40;
+  top: 49.58677686%;
+}
+
+.cassette-player-cassette {
+  background-image: url("../img/cassette-player/cassette.png");
+  width: 92.5928666%;
+  aspect-ratio: 50/34;
+  top: 10.0004068%;
+  left: 3.703714664%;
+}
+
+.cassette-player-controls {
+  background-image: url("../img/cassette-player/cassette-player-button-section.png");
+  width: 65.625%;
+  aspect-ratio: 42/14;
+  top: 87.60330579%;
+}
+
+.controls-button-img {
+  width: 21.4367378%;
+  aspect-ratio: 9/14;
+  top: 7.107438016%;
+}
+
+.play {
+  left: 2.381859756%;
+}
+.rewind {
+  left: 26.20045732%;
+}
+.fast-forward {
+  left: 52.40091463%;
+}
+.eject {
+  left: 76.2195122%;
+}
+
+
+/* ANIMATIONS */
+
+@keyframes scrollText {
+  20% {
+    transform: translateX(0);
+  }
+  80% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes timelineAnimation {
+  from {
+    left: 0;
+  }
+  to {
+    left: 100%;
+  }
+}
