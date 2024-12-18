@@ -1,14 +1,14 @@
 import { React, useEffect, useState } from "react";
 import Button from "./Button";
-import titleLogo from "../img/icons/80s-chip-tunes.gif";
-import languageIcon from "../img/icons/language-icon.png";
-import languageIconPressed from "../img/icons/language-icon-pressed.png";
-import backgroundIcon from "../img/icons/background-icon.png";
-import backgroundIconPressed from "../img/icons/background-icon-pressed.png";
-import backIcon from "../img/icons/back-icon.png";
-import backIconPressed from "../img/icons/back-icon-pressed.png";
-import nextIcon from "../img/icons/next-icon.png";
-import nextIconPressed from "../img/icons/next-icon-pressed.png";
+import titleLogo from "../img/header/80s-chip-tunes.gif";
+import languageButtonImg from "../img/header/buttons/language-button.png";
+import languageButtonPressedImg from "../img/header/buttons/language-button-pressed.png";
+import backgroundButtonImg from "../img/header/buttons/background-button.png";
+import backgroundButtonPressedImg from "../img/header/buttons/background-button-pressed.png";
+import backButtonImg from "../img/header/buttons/back-button.png";
+import backButtonPressedImg from "../img/header/buttons/back-button-pressed.png";
+import nextButtonImg from "../img/header/buttons/next-button.png";
+import nextButtonPressedImg from "../img/header/buttons/next-button-pressed.png";
 import "../style-sheets/Header.css";
 
 const backgroundImgNames = [
@@ -89,10 +89,10 @@ function Header() {
         <div className="control-section">
           <Button
             handleClick={() => handleVisibility("Language")}
-            iconClassName="control-section-icon"
-            iconSrc={languageIcon}
-            altIconSrc={languageIconPressed}
-            iconAlt={"Language Icon"}
+            imgClassName="control-section-button-img"
+            imgSrc={languageButtonImg}
+            altImgSrc={languageButtonPressedImg}
+            imgAlt={"Language Button"}
           />
           <ul className={`dropdown language-dropdown ${isLanguageDropdownVisible ? "visible" : ""}`.trimEnd()}>
             <li className="language-dropdown-option" onClick={() => handleLanguage("english")}>{language === "english" ? "English" : "Inglés"}</li>
@@ -102,19 +102,19 @@ function Header() {
         <div className="control-section">
           <Button 
             handleClick={() => handleVisibility("Background")}
-            iconClassName="control-section-icon"
-            iconSrc={backgroundIcon}
-            altIconSrc={backgroundIconPressed}
-            iconAlt={"Background Icon"}
+            imgClassName="control-section-button-img"
+            imgSrc={backgroundButtonImg}
+            altImgSrc={backgroundButtonPressedImg}
+            imgAlt={"Background Button"}
           />
           <div className={`dropdown background-dropdown ${isBackgroundDropdownVisible ? "visible" : ""}`.trimEnd()}>
             <div className="background-dropdown-main-section">
               <Button 
                 handleClick={handleClickBackButton}
-                iconClassName="background-dropdown-icon"
-                iconSrc={backIcon}
-                altIconSrc={backIconPressed}
-                iconAlt={"Back Icon"}
+                imgClassName="background-dropdown-button-img"
+                imgSrc={backButtonImg}
+                altImgSrc={backButtonPressedImg}
+                imgAlt={"Back Button"}
               />
               <div className="background-dropdown-img-container">
                 {/* No uso require() ya que las imagenes se encuentran en la carpeta public */}
@@ -123,10 +123,10 @@ function Header() {
               </div>
               <Button 
                 handleClick={handleClickNextButton}
-                iconClassName="background-dropdown-icon"
-                iconSrc={nextIcon}
-                altIconSrc={nextIconPressed}
-                iconAlt={"Next Icon"}
+                imgClassName="background-dropdown-button-img"
+                imgSrc={nextButtonImg}
+                altImgSrc={nextButtonPressedImg}
+                imgAlt={"Next Button"}
               />
             </div>
             <button className="select-background-button" onClick={handleBackgroundImg}>{language === "english" ? "Select" : "Seleccionar"}</button>
